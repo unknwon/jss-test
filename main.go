@@ -9,7 +9,7 @@ import (
 
 const banner = `
  ╔══════════════════════════════════╗
- ║   🎲  Random Content Generator  ║
+ ║   👋  Byebye, World!            ║
  ╚══════════════════════════════════╝`
 
 func printSection(title, content string) {

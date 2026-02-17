@@ -1,6 +1,6 @@
 # jss-test
 
-A random content generator CLI tool written in Go. It generates random numbers, inspirational quotes, and RGB colors with a formatted terminal display.
+A byebye CLI tool written in Go. It says "Byebye, World!" and generates random numbers, inspirational quotes, and RGB colors with a formatted terminal display.
 
 ## Usage
 
@@ -44,7 +44,7 @@ go run . -mode color
 
 ```
  ╔══════════════════════════════════╗
- ║   🎲  Random Content Generator  ║
+ ║   👋  Byebye, World!            ║
  ╚══════════════════════════════════╝
 
 ────────────────────────────────────────
