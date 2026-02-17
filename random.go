@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 )
 
@@ -25,4 +26,23 @@ var quotes = []string{
 // RandomQuote returns a random quote from the predefined list.
 func RandomQuote() string {
 	return quotes[rand.Intn(len(quotes))]
+}
+
+// RGB represents a color with red, green, and blue components.
+type RGB struct {
+	R, G, B int
+}
+
+// RandomColor returns a random RGB color.
+func RandomColor() RGB {
+	return RGB{
+		R: rand.Intn(256),
+		G: rand.Intn(256),
+		B: rand.Intn(256),
+	}
+}
+
+// Hex returns the color as a hex string (e.g., "#ff00aa").
+func (c RGB) Hex() string {
+	return fmt.Sprintf("#%02x%02x%02x", c.R, c.G, c.B)
 }
