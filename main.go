@@ -4,25 +4,58 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 )
+
+const banner = `
+ ╔══════════════════════════════════╗
+ ║   🎲  Random Content Generator  ║
+ ╚══════════════════════════════════╝`
+
+func printSection(title, content string) {
+	width := 40
+	fmt.Println(strings.Repeat("─", width))
+	fmt.Printf(" %-10s │ %s\n", title, content)
+}
+
+func printFooter() {
+	fmt.Println(strings.Repeat("─", 40))
+}
+
+func formatNumber(n int) string {
+	return fmt.Sprintf("%d", n)
+}
+
+func formatQuote(q string) string {
+	return fmt.Sprintf("\"%s\"", q)
+}
+
+func formatColor(c RGB) string {
+	return fmt.Sprintf("RGB(%d, %d, %d) / %s", c.R, c.G, c.B, c.Hex())
+}
 
 func main() {
 	mode := flag.String("mode", "all", "output mode: number, quote, color, or all")
 	flag.Parse()
 
+	fmt.Println(banner)
+	fmt.Println()
+
 	switch *mode {
 	case "number":
-		fmt.Printf("Random number (1-100): %d\n", RandomInt(1, 100))
+		printSection("Number", formatNumber(RandomInt(1, 100)))
+		printFooter()
 	case "quote":
-		fmt.Printf("Random quote: %s\n", RandomQuote())
+		printSection("Quote", formatQuote(RandomQuote()))
+		printFooter()
 	case "color":
-		c := RandomColor()
-		fmt.Printf("Random color: RGB(%d, %d, %d) %s\n", c.R, c.G, c.B, c.Hex())
+		printSection("Color", formatColor(RandomColor()))
+		printFooter()
 	case "all":
-		fmt.Printf("Random number (1-100): %d\n", RandomInt(1, 100))
-		fmt.Printf("Random quote: %s\n", RandomQuote())
-		c := RandomColor()
-		fmt.Printf("Random color: RGB(%d, %d, %d) %s\n", c.R, c.G, c.B, c.Hex())
+		printSection("Number", formatNumber(RandomInt(1, 100)))
+		printSection("Quote", formatQuote(RandomQuote()))
+		printSection("Color", formatColor(RandomColor()))
+		printFooter()
 	default:
 		fmt.Fprintf(os.Stderr, "unknown mode: %s (use number, quote, color, or all)\n", *mode)
 		os.Exit(1)
